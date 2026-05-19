@@ -1,0 +1,16 @@
+# Build output
+bin/
+out/
+*.class
+
+# Driver jar (download it, see libs/README.md)
+libs/*.jar
+
+# IDE (keep the shared project files)
+.idea/workspace.xml
+.idea/tasks.xml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
