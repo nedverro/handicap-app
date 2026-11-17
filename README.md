@@ -72,4 +72,4 @@ Java 8+ · Swing · MySQL / MariaDB · JDBC · MVC + DAO
 
 ## Author
 
-**Riyad Nouar** — Computer Engineering student (Cybersecurity), UIR
+**Riyad Nouar**
