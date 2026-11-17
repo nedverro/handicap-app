@@ -2,6 +2,8 @@
 --  UIR Handicap — Script SQL — Exécuter dans MySQL Workbench
 -- ============================================================
 
+SET NAMES utf8mb4;
+
 CREATE DATABASE IF NOT EXISTS uir_handicap
     CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE uir_handicap;
@@ -66,11 +68,11 @@ CREATE TABLE IF NOT EXISTS historique_action (
 ) ENGINE=InnoDB;
 
 -- ============================================================
---  DONNÉES DE TEST
---  IMPORTANT : Générez de vrais hash BCrypt avec :
---  PasswordUtil.hashPassword("admin123")
---  Remplacez les hash ci-dessous par les vrais hash générés
+--  DONNÉES DE TEST — comptes de démonstration
+--  Mots de passe hachés avec PasswordUtil (SHA-256 + sel)
+--    admin@uir.ac.ma  / admin123
+--    ilias@uir.ac.ma  / etudiant123
 -- ============================================================
--- INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, role) VALUES
--- ('Admin', 'Super', 'admin@uir.ac.ma', '<hash_bcrypt_ici>', 'ADMIN'),
--- ('Etudiant', 'Ilias', 'ilias@uir.ac.ma', '<hash_bcrypt_ici>', 'HANDICAPEE');
+INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, role) VALUES
+('Admin',    'Super', 'admin@uir.ac.ma', '4rsonyq8uQbHuRCL2OcCpg==$O+WVl0Md6/6jA484yfWhWT9ocgCusftlH9rssgrsxX8=', 'ADMIN'),
+('Etudiant', 'Ilias', 'ilias@uir.ac.ma', 'kfhBLsVulLqjj0f/vg/3kA==$ZgFIziWdflPu985bCftnloBusJsdsYc57u+/imH8FUg=', 'HANDICAPEE');

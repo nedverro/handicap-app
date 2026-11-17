@@ -49,7 +49,7 @@ public class MainFrame extends JFrame {
         tabs.addTab("📊  Tableau de Bord",   buildDashboard());
         tabs.addTab("📋  Demandes",           new DemandesPanel());
         tabs.addTab("📣  Réclamations",       new ReclamationsPanel());
-        tabs.addTab("🗂️  Archives",           buildPlaceholder("Archives & Recherche multicritère"));
+        tabs.addTab("🗂️  Archives",           new ArchivesPanel());
 
         setLayout(new BorderLayout());
         add(navbar, BorderLayout.NORTH);
@@ -83,15 +83,6 @@ public class MainFrame extends JFrame {
         return c;
     }
 
-    private JPanel buildPlaceholder(String txt) {
-        JPanel p = new JPanel(new BorderLayout());
-        p.setBackground(UIFactory.COULEUR_FOND);
-        JLabel l = new JLabel(txt, SwingConstants.CENTER);
-        l.setFont(new Font("Calibri", Font.ITALIC, 16));
-        l.setForeground(new Color(123, 147, 176));
-        p.add(l);
-        return p;
-    }
 
     private void deconnecter() {
         int c = JOptionPane.showConfirmDialog(this, "Voulez-vous vous déconnecter ?",

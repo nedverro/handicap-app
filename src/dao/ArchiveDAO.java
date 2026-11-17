@@ -43,6 +43,31 @@ public class ArchiveDAO {
         return liste;
     }
 
+    // Intitulé de l'élément archivé : type de la demande ou objet de la réclamation
+    public String intituleElement(Archive a) {
+        String sql;
+        Integer id;
+        if (a.getIdDemande() != null) {
+            sql = "SELECT type_demande FROM demande WHERE id_demande = ?";
+            id  = a.getIdDemande();
+        } else if (a.getIdReclamation() != null) {
+            sql = "SELECT objet FROM reclamation WHERE id_reclamation = ?";
+            id  = a.getIdReclamation();
+        } else {
+            return "";
+        }
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            try (ResultSet rs = pst.executeQuery()) {
+                return rs.next() ? rs.getString(1) : "";
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur intituleElement : " + e.getMessage());
+            return "";
+        }
+    }
+
     private Archive map(ResultSet rs) throws SQLException {
         Archive a = new Archive();
         a.setIdArchive(rs.getInt("id_archive"));
